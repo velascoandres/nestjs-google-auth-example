@@ -5,7 +5,7 @@ import { GoogleAuthService } from './google.auth.service';
 export class AuthController {
   constructor(private readonly authService: GoogleAuthService) {}
 
-  @Post('google-auth/signin-with-idToken')
+  @Post('google-auth/signin-with-id-token')
   googleAuth(@Body('idToken') idToken: string) {
     return this.authService.singInWithIdToken(idToken);
   }
