@@ -1,9 +1,9 @@
 import { Body, Controller, Param, Post } from '@nestjs/common';
-import { AuthService } from './auth.service';
+import { GoogleAuthService } from './google.auth.service';
 
 @Controller('auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService) {}
+  constructor(private readonly authService: GoogleAuthService) {}
 
   @Post('google-auth/signin-with-idToken')
   googleAuth(@Body('idToken') idToken: string) {

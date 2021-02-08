@@ -2,7 +2,7 @@ import { Inject, Injectable } from '@nestjs/common';
 import { OAuth2Client } from 'google-auth-library';
 
 @Injectable()
-export class AuthService {
+export class GoogleAuthService {
   constructor(
     @Inject('OAUTH2')
     private readonly oAuth2Client: OAuth2Client,
@@ -21,11 +21,9 @@ export class AuthService {
   }
 
   async validateGoogleIdToken(idToken: string) {
+  
     const ticket = await this.oAuth2Client.verifyIdToken({
       idToken: idToken,
-      audience: [
-          '<TODO: IF YOU HAVE MORE CLIENT IDS>'
-      ],
     });
     const payload = ticket.getPayload();
     
